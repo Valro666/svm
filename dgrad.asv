@@ -1,0 +1,41 @@
+clc
+res = [1 1 1 1];
+best = 0 ;
+
+tol = 1 ;
+
+c = res * 0.1;
+c(1);
+r1 = rails(c);
+
+normal = r1*100/140;
+
+final =  sum(normal)/4;
+
+r1;
+normal;
+final;
+
+tr = 1 ;
+
+cc = [c(1)]
+val = [final]
+while tr == 1 
+    
+    dc = res*0.2;
+    d = rails(dc);
+
+    dn = d*100/140;
+
+    df =  sum(dn)/4;
+
+    h = (df-final)
+    b = (dc(1)-c(1))
+    dv = h/b
+    
+    c = [c dc(1)]
+    val = [val df]
+    if abs(dv) <= tol
+        tr = 42
+    end
+end
