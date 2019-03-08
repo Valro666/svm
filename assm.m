@@ -1,10 +1,17 @@
 
 function svm =  assm(cc)
-svm = cc
+res = [1 1 1 1];
+if(size(cc) ~= 4)
+    c = res*cc(1);
+else
+    c = cc;
+end
+svm = [0 0 0 0];
 
 tic();
 juste = 0;
-c = [0.2060 0.2814 0.7092 14.4928];
+
+
 
 errmod = zeros(140,4);
 
@@ -12,7 +19,6 @@ errmod2 = zeros(1,4);
 for i = 1:4
     juste = 0;
     for mega = 1 : 140
-    %for mega = 1 : 1
     load defautsrails.mat
 
     ymod = [];
@@ -22,8 +28,6 @@ for i = 1:4
 
     X(mega,:)=[];
     Y(mega,:)=[];
-
-
 
         for v = 1:4
             col = [];
@@ -40,15 +44,9 @@ for i = 1:4
             [ett, score] = model{a}.predict(test);
             errmod(mega,a)= score(:,2);
             sc = [sc score(:,2) ];
-            %[o,p] = max(sc);
-            %disp([o p])
-            %if verif == p
-             % errmod2(a) = errmod2(a) + 1;
-            %end
 
         end
         [m, p] = max (sc,[],2); 
-        %disp([o p])
 
         if verif == p
             juste = juste + 1;
@@ -58,7 +56,6 @@ for i = 1:4
             fprintf('.');
         end
     end
-    %disp([juste])
     svm(i) = juste;
     fprintf('\n');
 end

@@ -1,3 +1,3 @@
-  a =42
   
-  save matsave best res
+  
+  save dataP x y

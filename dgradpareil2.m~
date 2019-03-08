@@ -3,7 +3,7 @@ tic()
 
 best = 0 ;
 
-tol = 0.1 ;
+tol = 0.01 ;
 
 c = 1;
 r1 = assm(c);
@@ -16,14 +16,14 @@ r1;
 normal;
 final;
 
-xx = [];
-yy = [];
+xx = []
+yy = []
 
 tr = 1 ;
 
-cc = [c];
-val = [final];
-dc = 0.5;
+cc = [c]
+val = [final]
+dc = res*1.01;
 while tr == 1 
     
     d = assm(dc);
@@ -46,7 +46,7 @@ while tr == 1
         tr = 42;
     end
     
-    dc = dc + dv;
+    dc = dc + res * 0.01*dv;
     disp([dc])
     xx = [xx dc];
     yy = [yy df];
