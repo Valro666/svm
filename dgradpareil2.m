@@ -23,7 +23,7 @@ tr = 1 ;
 
 cc = [c];
 val = [final];
-dc = 0.5;
+dc = 0.8;
 while tr == 1 
     
     d = assm(dc);
@@ -46,10 +46,14 @@ while tr == 1
         tr = 42;
     end
     
-    dc = dc + dv;
+    dc = dc + dv*0.1;
     disp([dc])
     xx = [xx dc];
     yy = [yy df];
+    
+    if dc <=0
+        tr = 42;
+    end
     
 end
 toc()

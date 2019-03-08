@@ -1,5 +1,5 @@
 
-plot(x(6:end),y(6:end))
+plot(x,y)
 
 %disp([num2str([12 45 78])])
 

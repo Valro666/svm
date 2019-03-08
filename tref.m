@@ -1,3 +1,3 @@
   
   
-  save dataP x y
+  save dataP2 x y
