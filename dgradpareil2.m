@@ -1,8 +1,6 @@
 clc
 tic()
 
-best = 0 ;
-
 tol = 0.1 ;
 
 c = 1;
@@ -24,6 +22,9 @@ tr = 1 ;
 cc = [c];
 val = [final];
 dc = 0.8;
+
+best = final ;
+cbest = 1 ;
 while tr == 1 
     
     d = assm(dc);
@@ -42,18 +43,28 @@ while tr == 1
     disp(num2str(dv))
     disp([num2str(cc)])
     disp([num2str(val)])
+    xx = [xx dc];
+    yy = [yy df];
     if abs(dv) <= tol
         tr = 42;
+        disp("sortie car tolerance")
+
     end
     
     dc = dc + dv*0.1;
     disp([dc])
-    xx = [xx dc];
-    yy = [yy df];
     
     if dc <=0
         tr = 42;
+        disp("sortie car c < 0")
+
     end
-    
+    if best < df
+        best = df
+        cbest = dc
+    end
 end
+
+disp(["best " df dc])
+plot(xx,yy)
 toc()

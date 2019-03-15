@@ -6,7 +6,7 @@ best = 0 ;
 tol = 0.2 ;
 c = res ;%* 0.1;
 %if exist('normal','var') ~= 1
-r1 = assm(c);
+r1 = assm2(c);
 
 normal = r1*100/140;
 
@@ -21,12 +21,12 @@ tr = [1 1 1 1] ;
 x = c;
 %val = [final]
 y = normal;
-dx = res*0.2;
+dx = res*0.8;
 while sum(tr) < 8 
     
     tmpx = x;
     
-    deriv = assm(dx);
+    deriv = assm2(dx);
     
     nderiv = deriv/140*100
     
@@ -46,7 +46,7 @@ while sum(tr) < 8
     end
     x
     y
-    y = [y ; nderiv];
+    y = [y ; nderiv]
     x = [x ; dx]
     
     dx = dx + grad*0.01;

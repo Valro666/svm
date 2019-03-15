@@ -2,6 +2,7 @@ function [ model ] = classi( xx , yy , c)
 %CLASSI Summary of this function goes here
 %   Detailed explanation goes here
     for a = 1:4
+        %model{a} = fitcsvm(xx,yy(:,a),'BoxConstraint',c(a));
         model{a} = fitcsvm(xx,yy(:,a),'BoxConstraint',c);
         %model = [model ;tmp]
         % erreur apprentissage du model a

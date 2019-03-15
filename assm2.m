@@ -14,30 +14,25 @@ tic();
 
 for i = 1:4
     juste = 0;
-    for mega = 1 : 140
+    for mega = 1 : 139
     load defautsrails.mat
     ymod = [];
     test = X(mega,:);
     verif = Y(mega,:);
     X(mega,:)=[];
     Y(mega,:)=[];
+
         for v = 1:4
             col = [];
             truc = (2*(Y == v)-1);
             ymod = [ymod truc];
         end
+        verif = ymod(mega,i);
         ymod;
         sc = [];
         model = classi(X , ymod, c(i) );
-        for imod = 1:4
-            %[ett, score] = model{a}.predict(test);
-            [ett, score] = predict(model{imod},test);
-            sc = [sc score(:,2) ];
-        end
-        %disp(sc)
-        [m, p] = max (sc,[],2);
-       %disp([m p verif sc])
-        if verif == p
+        lab = predict(model{i},test);
+        if lab == verif
             juste = juste + 1;
         end
 
@@ -46,7 +41,9 @@ for i = 1:4
         end
     end
     svm(i) = juste;
-    fprintf('%d \n',juste);
+    bruit = (juste)*100/140;
+    bruit = 100 - bruit;
+    fprintf('%0.2f \n',bruit);
 end
 
 toc()
