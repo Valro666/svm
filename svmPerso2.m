@@ -9,7 +9,8 @@ X = [X1;X2];
 Y = ones(m,1);
 Y(m1+1:end) = -1;
 
-[w, b] = apprendSVM(X, Y, 0.6);
+[w] = apprendSVMdual(X, Y, 0.6);
+disp(w)
 Ypred = predictionSVM(X, w, b);
 
 taux_reco = sum((Y == Ypred)) / size(Y, 1);

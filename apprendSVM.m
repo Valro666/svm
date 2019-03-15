@@ -16,7 +16,7 @@ function [w, b] = apprendSVM(X, Y, C)
     
     lb = [ones(1 + x2, 1) * (-Inf) ; zeros(x1, 1)];
     ub = [ones(total, 1) * Inf];
-    
+
     Xres = quadprog(H, f, a, b, [], [], lb, ub);
     
     b = Xres(1);
